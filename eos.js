@@ -7,13 +7,14 @@ httpEndpoint: "http://mainnet.eoscalgary.io"
  
 eos = Eos(config) // 127.0.0.1:8888
 
-eos.getActions("gyydoojzgige",-1,0).then(result => {console.log(result)})
+eos.getActions("gyydoojzgige").then(result => {
+ console.log(result);
+ console.log(result.actions[0]);
+ console.log(result.actions[1]);
 
-eos.getActions("gyydoojzgige",1000,0).then(result => {console.log(result)})
-eos.getActions("gyydoojzgige",1000,10).then(result => {console.log(result)})
-eos.getActions("gyydoojzgige",1,100).then(result => {console.log(result)})
-eos.getActions("eosio").then(result => {console.log(result)})
-eos.getActions("eosio.token").then(result => {console.log(result)})
+            })
+
+
 
 
 return;
