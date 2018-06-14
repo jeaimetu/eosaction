@@ -9,7 +9,7 @@ eos = Eos(config) // 127.0.0.1:8888
 
 eos.getInfo({}).then(result => {console.log(result)})
 
-for(int i = 1;i<681850;i++){
+for(i = 1;i<681850;i++){
  eos.getBlock(i).then(result => {
  console.log(result.transactions[0].trx.transaction.actions[0]);
 });
