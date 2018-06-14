@@ -29,7 +29,10 @@ function saveBlockInfo(){
   //console.log(result.transactions[0].trx.transaction.actions[0]);
   //save data to Mongo DB with block number
   MongoClient.connect(url, function(err, db) {
-   if (err) throw err;
+   if (err){
+    console.log(err);
+    throw err;
+   }
    var dbo = db.db("heroku_9cf4z9w3");
    var myobj = { bno : idx, info : result.transactions[0].trx.transaction.actions[0] }
    dbo.collection("eosblockinfo").insertOne(myobj, function(err, res) {
