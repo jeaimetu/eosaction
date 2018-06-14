@@ -54,14 +54,14 @@ setInterval(saveBlockInfo, 5000);
 
 
 
-return;
+
 
 /*
 bithumb.ticker('EOS').then(function(response){
   console.log(response.data)
 })
 */
-
+/*
  
 // All API methods print help when called with no-arguments.
 eos.getBlock()
@@ -91,3 +91,4 @@ eos.getActions("gyydoojzgige", 1000, 0).then(result => {
  console.log(result.actions)
  eos.getBlock(5000, callback);
 })
+*/
