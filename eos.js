@@ -15,7 +15,9 @@ eos.getActions("gyydoojzgige").then(result => {
 
             })
 
-
+eos.getActions("eosio.token").then(result => {
+ console.log(result);
+});
 
 
 return;
