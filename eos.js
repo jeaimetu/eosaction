@@ -21,6 +21,11 @@ eos.getBlock(185732).then(result => {
 });
 
 
+eos.getBlock(3985).then(result => {
+ console.log(result.transactions[1].trx.transaction.actions);
+});
+
+
 return;
 
 eos.getBlock(3985).then(result => {
