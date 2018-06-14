@@ -7,7 +7,7 @@ httpEndpoint: "http://mainnet.eoscalgary.io"
  
 eos = Eos(config) // 127.0.0.1:8888
 
-eos.getBlock(663087).then(result => {
+eos.getBlock(185732).then(result => {
  console.log(result);
 });
 
