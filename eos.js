@@ -1,12 +1,15 @@
 Eos = require('eosjs') // Eos = require('./src')
-var bithumbapi = require('bithumbapi');
-var bithumb = new bithumbapi();
+
  
 config = {
 httpEndpoint: "http://mainnet.eoscalgary.io"
 }
  
 eos = Eos(config) // 127.0.0.1:8888
+
+eos.getActions("gyydoojzgige").then(result => {console.log(result)})
+
+return;
 
 eos.getCurrencyBalance("eosio.token","gyydoojzgige").then(result => {console.log(result)})
 //console.log('currency balance', balance);
@@ -17,7 +20,7 @@ v1 = result.self_delegated_bandwidth.net_weight.split(" ");
  console.log(parseInt(v1[0],10) + parseInt(v2[0],10));
 })
 
-return;
+
 
 /*
 bithumb.ticker('EOS').then(function(response){
