@@ -7,7 +7,7 @@ httpEndpoint: "http://mainnet.eoscalgary.io"
  
 eos = Eos(config) // 127.0.0.1:8888
 
-eos.getActions("gyydoojzgige").then(result => {console.log(result)})
+eos.getActions("gyydoojzgige",-1,0).then(result => {console.log(result)})
 
 return;
 
