@@ -9,7 +9,11 @@ eos = Eos(config) // 127.0.0.1:8888
 
 eos.getBlock(185732).then(result => {
  console.log(result);
+ console.log(result.transactions);
 });
+
+
+return;
 
 eos.getBlock(3985).then(result => {
  console.log(result);
@@ -18,7 +22,7 @@ eos.getBlock(3985).then(result => {
 eos.getBlock(44516).then(result => {
  console.log(result);
 });
-return;
+
 
 eos.getTransaction("78341bd62d92fd09ad8fabd3270824ea9ddcbcba84e54dea541e68afe07b91ee").then(result => {
   console.log(result);
