@@ -18,7 +18,7 @@ idx = 1;
 eos.getInfo({}).then(result => {
  console.log(result);
  startIndex = result.last_irreversible_block_num;
- idx = startIndex;
+ idx = startIndex - 1000;
 });
  
 
