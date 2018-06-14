@@ -7,6 +7,20 @@ httpEndpoint: "http://mainnet.eoscalgary.io"
  
 eos = Eos(config) // 127.0.0.1:8888
 
+eos.getBlock(3985).then(result => {
+ console.log(result.transactions[0].trx.transaction.actions);
+});
+
+eos.getBlock(44516).then(result => {
+ console.log(result.transactions[0].trx.transaction.actions);
+});
+
+eos.getBlock(48566).then(result => {
+ console.log(result.transactions[0].trx.transaction.actions);
+});
+
+
+
 eos.getBlock(44516).then(result => {
  console.log("total result");
  console.log(result);
