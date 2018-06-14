@@ -11,6 +11,12 @@ eos.getBlock(185732).then(result => {
  console.log(result);
 });
 
+eos.getTransaction("78341bd62d92fd09ad8fabd3270824ea9ddcbcba84e54dea541e68afe07b91ee").then(result => {
+  console.log(result);
+});
+
+return;
+
 eos.getActions("gyydoojzgige").then(result => {
  console.log(result);
  console.log(result.actions[0]);
@@ -26,7 +32,7 @@ eos.getActions("eosio.token").then(result => {
 });
 
 
-return;
+
 
 eos.getCurrencyBalance("eosio.token","gyydoojzgige").then(result => {console.log(result)})
 //console.log('currency balance', balance);
