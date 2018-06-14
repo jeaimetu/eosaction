@@ -1,5 +1,10 @@
 Eos = require('eosjs') // Eos = require('./src')
 
+var mongo = require('mongodb');
+
+var MongoClient = require('mongodb').MongoClient;
+var url = process.env.MONGODB_URI;
+
  
 config = {
 httpEndpoint: "http://mainnet.eoscalgary.io"
@@ -7,94 +12,42 @@ httpEndpoint: "http://mainnet.eoscalgary.io"
  
 eos = Eos(config) // 127.0.0.1:8888
 
-eos.getInfo({}).then(result => {console.log(result)})
+//getting starting block id
+var idx = 0;
+eos.getInfo({}).then(result => {
+ console.log(result);
+ startIndex = result.last_irreversible_block_num;
+ idx = startIndex;
+});
+ 
+
+ 
+function saveBlockInfo(){
+ eos.getBlock(idx).then(result => {
+  //console.log(result.transactions[0].trx.transaction.actions[0]);
+  //save data to Mongo DB with block number
+  MongoClient.connect(url, function(err, db) {
+   if (err) throw err;
+   var dbo = db.db("heroku_9cf4z9w3");
+   var myobj = { bno : idx, info : result.transactions[0].trx.transaction.actions[0] }
+   dbo.collection("eosblockinfo").insertOne(myobj, function(err, res) {
+        if (err) throw err;
+          console.log("1 document inserted");
+              db.close();
+    }); //end of insert one
+   }); //end of connect
+   idx++;
+  }); // end of getblock
+} //end of function
+                        
+
+
+//setInterval(saveBlockInfo, 5000);
+
+
+
 
 return;
-
-for(i = 680000;i<681850;i++){
- eos.getBlock(i).then(result => {
- console.log(result.transactions[0].trx.transaction.actions[0]);
-});
-
-}
-
-return;
-eos.getBlock(3985).then(result => {
- console.log(result.transactions[0].trx.transaction.actions[0]);
-});
-
-eos.getBlock(44516).then(result => {
- console.log(result.transactions[0].trx.transaction.actions[0]);
-});
-
-eos.getBlock(48566).then(result => {
- console.log(result.transactions[0].trx.transaction.actions[0]);
-});
-
-return;
-
-eos.getBlock(44516).then(result => {
- console.log("total result");
- console.log(result);
- console.log("transactions object result");
- console.log(result.transactions);
-  console.log("transactions trx object result");
- console.log(result.transactions[0].trx);
- console.log(result.transactions[0].trx);
- console.log("result details array 0");
- console.log(result.transactions[0].trx.transaction.actions);
- console.log("result details array 1");
- console.log(result.transactions[1].trx.transaction.actions);
-});
-
-
-
-
-
-
-eos.getBlock(3985).then(result => {
- console.log(result);
-});
-
-eos.getBlock(44516).then(result => {
- console.log(result);
-});
-
-
-eos.getTransaction("78341bd62d92fd09ad8fabd3270824ea9ddcbcba84e54dea541e68afe07b91ee").then(result => {
-  console.log(result);
- console.log(result.transactions[0].trx);
-});
-
-
-
-eos.getActions("gyydoojzgige").then(result => {
- console.log(result);
- console.log(result.actions[0]);
- console.log(result.actions[1]);
- console.log(result.actions);
- console.log(result.actions.block_num);
- console.log(result.actions[0].block_num);
-
-            })
-
-eos.getActions("eosio.token").then(result => {
- console.log(result);
-});
-
-
-
-
-eos.getCurrencyBalance("eosio.token","gyydoojzgige").then(result => {console.log(result)})
-//console.log('currency balance', balance);
-eos.getAccount("gyydoojzgige").then(result => {
- console.log(result.self_delegated_bandwidth.net_weight, result.self_delegated_bandwidth.cpu_weight, result.voter_info.unstaking)
-v1 = result.self_delegated_bandwidth.net_weight.split(" ");
- v2 = result.self_delegated_bandwidth.cpu_weight.split(" ");
- console.log(parseInt(v1[0],10) + parseInt(v2[0],10));
-})
-
-
 
 /*
 bithumb.ticker('EOS').then(function(response){
