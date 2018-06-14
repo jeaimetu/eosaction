@@ -42,10 +42,11 @@ function saveBlockInfo(){
    dbo.collection("eosblockinfo").insertOne(myobj, function(err, res) {
         if (err) throw err;
           console.log("1 document inserted");
+       idx++;
               db.close();
     }); //end of insert one
    }); //end of connect
-   idx++;
+
   }); // end of getblock
 } //end of function
                         
