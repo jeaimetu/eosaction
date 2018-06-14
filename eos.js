@@ -27,7 +27,7 @@ function saveBlockInfo(){
  console.log("saveBlockInfo for ",idx);
  eos.getBlock(idx).then(result => {
   console.log(result);
-  console.log(result.transactions[0].trx.transaction.actions[0]);
+  //console.log(result.transactions[0].trx.transaction.actions[0]);
   //save data to Mongo DB with block number
   MongoClient.connect(url, function(err, db) {
    
@@ -36,7 +36,8 @@ function saveBlockInfo(){
     throw err;
    }
    var dbo = db.db("heroku_dtfpf2m1");
-   var myobj = { bno : idx, info : result.transactions[0].trx.transaction.actions[0] }
+   //var myobj = { bno : idx, info : result.transactions[0].trx.transaction.actions[0] }
+   var myobj = { bno : idx, info : result }
    dbo.collection("eosblockinfo").insertOne(myobj, function(err, res) {
         if (err) throw err;
           console.log("1 document inserted");
