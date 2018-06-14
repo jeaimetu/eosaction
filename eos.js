@@ -15,8 +15,9 @@ eos.getBlock(3985).then(result => {
   console.log("transactions trx object result");
  console.log(result.transactions[0].trx);
  console.log(result.transactions[0].trx);
- console.log("result details");
+ console.log("result details array 0");
  console.log(result.transactions[0].trx.transaction.actions);
+ console.log("result details array 1");
  console.log(result.transactions[1].trx.transaction.actions);
 });
 
