@@ -13,7 +13,7 @@ httpEndpoint: "http://mainnet.eoscalgary.io"
 eos = Eos(config) // 127.0.0.1:8888
 
 //getting starting block id
-var idx = 0;
+var idx = 1;
 eos.getInfo({}).then(result => {
  console.log(result);
  startIndex = result.last_irreversible_block_num;
@@ -23,7 +23,9 @@ eos.getInfo({}).then(result => {
 
  
 function saveBlockInfo(){
+ console.log("saveBlockInfo for ",idx);
  eos.getBlock(idx).then(result => {
+  
   //console.log(result.transactions[0].trx.transaction.actions[0]);
   //save data to Mongo DB with block number
   MongoClient.connect(url, function(err, db) {
@@ -42,7 +44,7 @@ function saveBlockInfo(){
                         
 
 
-//setInterval(saveBlockInfo, 5000);
+setInterval(saveBlockInfo, 5000);
 
 
 
