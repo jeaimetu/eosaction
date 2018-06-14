@@ -11,6 +11,7 @@ eos.getActions("gyydoojzgige").then(result => {
  console.log(result);
  console.log(result.actions[0]);
  console.log(result.actions[1]);
+ console.log(result.actions);
 
             })
 
