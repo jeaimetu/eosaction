@@ -26,7 +26,7 @@ eos.getInfo({}).then(result => {
 function saveBlockInfo(){
  console.log("saveBlockInfo for ",idx);
  eos.getBlock(idx).then(result => {
-  
+  console.log(result);
   console.log(result.transactions[0].trx.transaction.actions[0]);
   //save data to Mongo DB with block number
   MongoClient.connect(url, function(err, db) {
