@@ -19,7 +19,7 @@ eos.getBlock(48566).then(result => {
  console.log(result.transactions[0].trx.transaction.actions[0]);
 });
 
-
+return;
 
 eos.getBlock(44516).then(result => {
  console.log("total result");
@@ -38,7 +38,7 @@ eos.getBlock(44516).then(result => {
 
 
 
-return;
+
 
 eos.getBlock(3985).then(result => {
  console.log(result);
