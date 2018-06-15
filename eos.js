@@ -6,11 +6,11 @@ var MongoClient = require('mongodb').MongoClient;
 var url = process.env.MONGODB_URI;
 
  
-config = {
+eosConfig = {
 httpEndpoint: "http://mainnet.eoscalgary.io"
 }
  
-eos = Eos(config) // 127.0.0.1:8888
+eos = Eos(eosConfig) // 127.0.0.1:8888
 
 //getting starting block id
 idx = 825992;
