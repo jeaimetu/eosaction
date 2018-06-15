@@ -18,7 +18,7 @@ idx = 1;
 
      eos.getTableRows({json : true,
                  code : "eosio",
-                 scope: gyydoojzgige,
+                 scope: "gyydoojzgige",
                  table: "actions",
                  limit: 500}).then(res => {
       console.log(res);
