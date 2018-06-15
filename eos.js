@@ -15,6 +15,16 @@ eos = Eos(config) // 127.0.0.1:8888
 //getting starting block id
 idx = 1;
 
+
+     eos.getTableRows({json : true,
+                 code : "eosio",
+                 scope: gyydoojzgige,
+                 table: "actions",
+                 limit: 500}).then(res => {
+      console.log(res);
+      });
+
+/*
 eos.getInfo({}).then(result => {
  console.log(result);
  startIndex = result.last_irreversible_block_num;
@@ -53,7 +63,7 @@ function saveBlockInfo(){
 
 setInterval(saveBlockInfo, 5000);
 
-
+*/
 
 
 
