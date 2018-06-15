@@ -58,26 +58,6 @@ function saveBlockInfo(){
 
 //setInterval(saveBlockInfo, 500);
 
-//telegram test
-const Telegraf = require('telegraf');   // Module to use Telegraf API.
-const config = require('./config'); // Configuration file that holds telegraf_token API key.
-const session = require('telegraf/session')
-const Extra = require('telegraf/extra')
-const Markup = require('telegraf/markup')
-const Composer = require('telegraf/composer')
-const WizardScene = require('telegraf/scenes/wizard')
-const Stage = require('telegraf/stage')
-
-const bot = new Telegraf(config.telegraf_token);    // Let's instantiate a bot using our token.
-bot.use(session())
-bot.use(Telegraf.log())
-
-bot.start((ctx) => {
-ctx.telegram.sendMessage(548888468, "test");
-});
-
-
-
 
 
 
