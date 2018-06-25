@@ -27,7 +27,7 @@ async function getAddBalance(){
                  scope: "gyydoojzgige",
                  table: "accounts",
                  });
- return result.rows[0].balance;
+ return bal.rows[0].balance;
 }
 
 async function getTokenBalance(){
@@ -42,7 +42,7 @@ async function getDacBalance(){
                  scope: "gyydoojzgige",
                  table: "accounts",
                  });
- return result.rows[0].balance;
+ return bal.rows[0].balance;
 }
 
 
