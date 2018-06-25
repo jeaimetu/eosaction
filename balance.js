@@ -30,13 +30,14 @@ async function getAddBalance(){
  return bal.rows[0].balance;
 }
 
-async function getTokenBalance(){
+async function getTokenBalance(cb){
  let [addBalance, dacBalance] = await Promise.all([getAddBalance(), getDacBalance()]);
 console.log(addBalance, dacBalance);
  msg = addBalance;
  msg += "\n";
  msg += dacBalance;
  console.log(Date.now());
+ cb(msg);
  return msg;
 }
  
@@ -55,5 +56,5 @@ async function getDacBalance(){
 eos = Eos(eosConfig) // 127.0.0.1:8888
 
 console.log(Date.now());
-console.log(getTokenBalance());
 
+getTokenBalance((result)=>{console.log(result)});
