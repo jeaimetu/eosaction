@@ -1,8 +1,22 @@
+Eos = require('eosjs') // Eos = require('./src')
+
+var mongo = require('mongodb');
+
+var MongoClient = require('mongodb').MongoClient;
+var url = process.env.MONGODB_URI;
+
+ 
+eosConfig = {
+httpEndpoint: "http://mainnet.eoscalgary.io"
+}
+ 
+eos = Eos(eosConfig) // 127.0.0.1:8888
+
 console.log("other data");
     loadData(ctx, function(id){
        ctx.session.id = id;
     eos.getTableRows({code : "eosadddddddd",
-                 scope: ctx.session.id,
+                 scope: "gyydoojzgige",
                  table: "accounts",
                  }).then(result => {
      console.log(result);
@@ -11,9 +25,8 @@ console.log("other data");
      console.log(result.rows);
      console.log(result.rows[0]);
      var msg = "token balance is " + result.rows[0].balance;
-     ctx.telegram.sendMessage(ctx.from.id, msg)
+     console.log(msg);
     }).catch((err)=>{
-     var msg = "토큰 잔고 조회 실패";
-     ctx.telegram.sendMessage(ctx.from.id, msg)
+console.log("balance check fail");
     });
     });
