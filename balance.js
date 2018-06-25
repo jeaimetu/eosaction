@@ -49,11 +49,6 @@ async function getDacBalance(){
  
 eos = Eos(eosConfig) // 127.0.0.1:8888
 
+console.log(Data.now());
 getTokenBalance();
-getAddBalance((result)=>{
- console.log(result);
-});
-getDacBalance((result)=>{
- console.log(result);
-});
-
+console.log(Data.now());
