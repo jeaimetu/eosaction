@@ -14,7 +14,8 @@ eos = Eos(eosConfig) // 127.0.0.1:8888
 
 console.log("other data");
 
-    eos.getTableRows({code : "eosadddddddd",
+    eos.getTableRows({json : true,
+                      code : "eosadddddddd",
                  scope: "gyydoojzgige",
                  table: "accounts",
                  }).then(result => {
