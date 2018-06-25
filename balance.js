@@ -13,8 +13,7 @@ httpEndpoint: "http://mainnet.eoscalgary.io"
 eos = Eos(eosConfig) // 127.0.0.1:8888
 
 console.log("other data");
-    loadData(ctx, function(id){
-       ctx.session.id = id;
+
     eos.getTableRows({code : "eosadddddddd",
                  scope: "gyydoojzgige",
                  table: "accounts",
@@ -29,4 +28,4 @@ console.log("other data");
     }).catch((err)=>{
 console.log("balance check fail");
     });
-    });
+
