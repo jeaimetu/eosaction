@@ -30,6 +30,12 @@ async function getAddBalance(){
  return result.rows[0].balance;
 }
 
+async function getTokenBalance(){
+ let [addBalance, dacBalance] = await Promise.all([getAddBalance(), getDacBalance()]);
+console.log(addBalance, dacBalance);
+}
+ 
+
 async function getDacBalance(){
  let bal = await eos.getTableRows({json : true,
                       code : "eosdactokens",
@@ -43,5 +49,4 @@ async function getDacBalance(){
  
 eos = Eos(eosConfig) // 127.0.0.1:8888
 
-let [addBalance, dacBalance] = await Promise.all([getAddBalance(), getDacBalance()]);
-console.log(addBalance, dacBalance);
+getTokenBalance();
