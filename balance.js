@@ -9,24 +9,39 @@ var url = process.env.MONGODB_URI;
 eosConfig = {
 httpEndpoint: "http://mainnet.eoscalgary.io"
 }
- 
-eos = Eos(eosConfig) // 127.0.0.1:8888
 
-console.log("other data");
+async function getFirstUser() {
+    try {
+        let users = await getUsers();
+        return users[0].name;
+    } catch (err) {
+        return {
+            name: 'default user'
+        };
+    }
+}
 
-    eos.getTableRows({json : true,
+async function getAddBalance(){
+ let bal = await eos.getTableRows({json : true,
                       code : "eosadddddddd",
                  scope: "gyydoojzgige",
                  table: "accounts",
-                 }).then(result => {
-     console.log(result);
-     console.log(result[0]);
+                 });
+ return result.rows[0].balance;
+}
 
-     console.log(result.rows);
-     console.log(result.rows[0]);
-     var msg = "token balance is " + result.rows[0].balance;
-     console.log(msg);
-    }).catch((err)=>{
-console.log("balance check fail");
-    });
+async function getDacBalance(){
+ let bal = await eos.getTableRows({json : true,
+                      code : "eosdactokens",
+                 scope: "gyydoojzgige",
+                 table: "accounts",
+                 });
+ return result.rows[0].balance;
+}
 
+
+ 
+eos = Eos(eosConfig) // 127.0.0.1:8888
+
+let [addBalance, dacBalance] = await Promise.all([getAddBalance(), getDacBalance()]);
+console.log(addBalance, dacBalance);
